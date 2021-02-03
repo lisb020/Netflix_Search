@@ -1,11 +1,11 @@
 --Drop existing tables
-DROP TABLE "Title";
+DROP TABLE "Netflix_title_Listed_in";
 DROP TABLE "Netflix_Listed_in";
-DROP TABLE "Netflix_Title_Listed_in";
-DROP TABLE "OMDB_genre";
 DROP TABLE "OMDB_title_genre";
-DROP TABLE "OMDB_language";
+DROP TABLE "OMDB_genre";
 DROP TABLE "OMDB_title_language";
+DROP TABLE "OMDB_language";
+DROP TABLE "Title";
 
 -- Schema Exported from QuickDBD: https://www.quickdatabasediagrams.com/
 -- merged OMDB and Netflix attributes into Title table
@@ -15,27 +15,35 @@ CREATE TABLE "Title" (
     -- Netflix
     "title" varchar   NOT NULL,
     -- Netflix
-    "date_added" date   NOT NULL,
+    "type" varchar,
     -- Netflix
-    "rating" varchar   NOT NULL,
+    "director" varchar,
     -- Netflix
-    "duration" varchar   NOT NULL,
+    "cast" varchar,
     -- Netflix
-    "description" varchar   NOT NULL,
+    "country" varchar,
     -- Netflix
-    "release_year" int   NOT NULL,
+    "date_added" date,
+    -- Netflix
+    "rating" varchar,
+    -- Netflix
+    "duration" varchar,
+    -- Netflix
+    "description" varchar,
+    -- Netflix
+    "release_year" int,
     -- OMDB
-    "runtime" varchar   NOT NULL,
+    "runtime" varchar,
     -- OMDB
-    "ImbdRating" float   NOT NULL,
+    "imdbRating" float,
     -- OMDB
-    "ImdbVotes" int   NOT NULL,
+    "imdbVotes" int,
     -- OMDB
-    "poster" varchar   NOT NULL,
+    "poster" varchar,
     -- OMDB
-    "awards" varchar   NOT NULL,
+    "awards" varchar,
     -- OMDB
-    "boxoffice" varchar   NOT NULL,
+    "boxoffice" varchar,
     CONSTRAINT "pk_Title" PRIMARY KEY (
         "show_id"
      )
