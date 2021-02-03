@@ -24,7 +24,8 @@ We are providing the user a way to search netflix shows and movies by genre and 
 - Each API key only allowed 1000 pulls per day and we had over 6000 pulls. We had to manage multiple API keys in a list and loop through to not exceed 1000 per key. 
 
 ### Transform
-- The API pull jupyter notebook exported a CSV. The Transform_Load.ipynb pulled the two CSV files and then merged them. We dropped some columns that were not a one-to-one to the title and created separate tables for those with a junction table.
+- The API pull jupyter notebook exported a CSV. The Transform_Load.ipynb pulled the two CSV files and then merged them. We dropped the "listed_in", "genre", and "language" columns that were not a one-to-one to the title and created separate tables for those with a junction table.
+- The "imdbVotes" column was stripped of the commas and turned into an integer 
 - The data was pulled into a dataframe from the CSVs with pandas. Pandas did not recognize the comma delimited strings as a list. We had to use the str.split(',').tolist() function for the "genre", "listed_in", and "language" columns. We did not do this for the "country", "director", and "cast" columns since we were not splitting them into extra tables. 
 >>- We removed the NaN values before looping through the "genre", "listed_in" and "language" columns. We looped through to get the unique values into a set. A set was used since we wanted unique values only in the list for each category and we did not need them in a certain order.
 - We then did the .explode() to be able to break out the show_id into a row per genre/listed_in or language.
